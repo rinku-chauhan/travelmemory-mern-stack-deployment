@@ -1,4 +1,13 @@
-# TravelMemory Application Deployment Documentation
+# TravelMemory MERN Application Deployment
+
+![AWS](https://img.shields.io/badge/AWS-EC2-orange)
+![NGINX](https://img.shields.io/badge/NGINX-Reverse%20Proxy-green)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-brightgreen)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-darkgreen)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-DNS-orange)
+![PM2](https://img.shields.io/badge/PM2-Process%20Manager-yellow)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
 # Project Overview
 
