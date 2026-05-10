@@ -5,44 +5,65 @@ import axios from "axios";
 import { baseUrl } from "../../url";
 
 export default function Home() {
-  const [data, setData] = useState();
+
+  // Store API response
+  const [data, setData] = useState([]);
+
+  // Fetch data from backend
   useEffect(() => {
-    axios.get(`${baseUrl}/trip/`).then((res) => setData(res.data));
+    axios
+      .get(`${baseUrl}`)
+      .then((res) => {
+
+        // Safety check to ensure array
+        if (Array.isArray(res.data)) {
+          setData(res.data);
+        } else {
+          setData([]);
+        }
+
+      })
+      .catch((err) => {
+        console.error("API Error:", err);
+        setData([]);
+      });
   }, []);
-  if (data) {
-    return (
-      <div style={{ margin: "2%" }}>
-        {data.map((e) => {
-          if (e.featured) {
-            return (
+
+  return (
+    <div style={{ margin: "2%" }}>
+
+      {/* Loading State */}
+      {data.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {/* Featured Trips */}
+          {data
+            .filter((e) => e.featured)
+            .map((e) => (
               <FeaturedCard
+                key={e._id}
                 title={e.tripName}
                 tripType={e.tripType}
                 description={e.shortDescription}
                 id={e._id}
-              ></FeaturedCard>
-            );
-          } else {
-            return null;
-          }
-        })}
-        {data.map((e) => {
-          if (!e.featured) {
-            return (
+              />
+            ))}
+
+          {/* Normal Trips */}
+          {data
+            .filter((e) => !e.featured)
+            .map((e) => (
               <Card
+                key={e._id}
                 title={e.tripName}
                 tripType={e.tripType}
                 description={e.shortDescription}
                 id={e._id}
-              ></Card>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </div>
-    );
-  } else {
-    return <>Loading...</>;
-  }
+              />
+            ))}
+        </>
+      )}
+    </div>
+  );
 }
