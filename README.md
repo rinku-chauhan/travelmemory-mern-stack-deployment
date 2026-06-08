@@ -1,4 +1,4 @@
-# # Production-Ready MERN Stack Deployment on AWS
+# Production-Ready MERN Stack Deployment on AWS
 
 <p align="left">
 
