@@ -1,4 +1,4 @@
-# Production-Ready MERN Stack Deployment on AWS
+# TravelMemory MERN Stack Deployment on AWS
 
 <p align="left">
 
